@@ -26,6 +26,9 @@ result "User 'supportuser' exists" $?
 echo "Redhat@123" | su - supportuser -c "whoami" &>/dev/null
 result "'supportuser' password works (Redhat@123)" $?
 
+# Cleanup: Remove the test folder if it exists
+rm -rf /tmp/testfolder
+
 # 3. Check allowed sudo commands
 su - supportuser -c "sudo mkdir /tmp/testfolder" &>/dev/null
 result "'sudo mkdir' allowed" $?
